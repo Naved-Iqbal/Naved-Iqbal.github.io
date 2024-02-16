@@ -1,0 +1,123 @@
+    <!-- ### START OF CALCULATOR CONTAINER #### -->
+    <div class="container pt-3" id="content">
+
+        <!-- Start of Form for User Input -->
+        <!-- Capital Input -->
+        <div class="row mb-3">
+            <label for="inputCapital" class="col-2 col-form-label" data-bs-toggle="tooltip" data-bs-title="Default tooltip">Capital (₹):</label>
+            <div class="col-4">
+                <input type="number" class="form-control" id="inputCapital" oninput="convertToWords()" placeholder="Enter Capital"/>
+                <div id="capitalInWords"></div>
+                <div id="capitalError" class="invalid-feedback d-block"></div>
+            </div>
+        </div>
+
+        <!-- Risk on Capital Input -->
+        <div class="row mb-3">
+          <div class="col-2">Risk on Capital (%):</div>
+          <div class="col-4">
+            <div class="input-group mb-3">
+            <select id="riskPercentageList" class="form-select" onchange="handleRiskChange(this)">
+              <option value="0.03" selected>3%</option>
+              <option value="0.025">2.5%</option>
+              <option value="0.02">2%</option>
+              <option value="0.015">1.5%</option>
+              <option value="0.01">1%</option>
+            </select>
+            <label class="input-group-text text-bg-light ps-4 col-6" for="riskPercentageList" id="riskAmount"></label>
+          </div>
+          </div>
+        </div>
+
+
+        <!-- Entery Price Input -->
+        <div class="row mb-3">
+            <label for="inputEntryPrice" class="col-2 col-form-label">Entry Price (₹):</label>
+            <div class="col-4">
+                <input type="number" class="form-control" id="inputEntryPrice" placeholder="Enter Entry Price" />
+                <div id="entryPriceError" class="invalid-feedback d-block"></div>
+            </div>
+        </div>
+
+        <!-- Target (TGT) Price Input -->
+        <div class="row mb-3">
+            <label for="inputTargetPrice" class="col-2 col-form-label">Target (TGT) Price (₹):</label>
+            <div class="col-4">
+                <input type="number" class="form-control" id="inputTargetPrice" placeholder="Enter Target Price" />
+                <div id="targetPriceError" class="invalid-feedback d-block"></div>
+            </div>
+        </div>
+
+        <!-- Stop-Loss (SL) Price Input -->
+        <div class="row mb-3">
+            <label for="inputStopLossPrice" class="col-2 col-form-label">Stop-Loss (SL) Price (₹):</label>
+            <div class="col-4">
+                <input type="number" class="form-control" id="inputStopLossPrice" placeholder="Enter Stop-Loss Price" />
+                <div id="stopLossPriceError" class="invalid-feedback d-block"></div>
+            </div>
+        </div>
+  
+        <!-- Stop-Loss (SL) Price Input -->
+        <div class="row mb-3">
+            <div class="col-2 col-form-label"></div>
+            <div class="col-4">
+                <button onclick="calculate()" class="btn btn-primary" id="btn-calculate">Calculate</button>
+            </div>
+        </div>
+      <!-- End of Form for User Input -->
+
+    </div>
+    <!-- ### END OF CALCULATOR CONTAINER #### -->
+
+    <table class="table table-bordered table-responsive table-hover mt-3 ps-5">
+      <thead class="table-primary">
+        <tr>
+          <th class="column1" scope="col">Parameter</th>
+          <th class="column2" scope="col">Value</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        <tr>
+          <td class="column1">Quantity to Buy</td>
+          <td class="column2 fw-bold" id="stockQuantity"></td>
+        </tr>
+        <tr>
+          <td class="column1">Capital Required</td>
+          <td class="column2">
+            <span class="fw-bold" id="outputCapitalRequired"></span>
+            &nbsp;&nbsp;
+            <span id="outputCapitalRequiredPercentage" class="badge text-bg-info"></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="column1">Risk/Reward Ratio</td>
+          <td class="column2 fw-bold">
+            <div class="hstack">
+              <div id="outputRiskRatio"></div>
+              <div id="outputRewardRatio"></div>
+            </div>
+          </td>
+        </tr>
+        <tr class="table-success">
+          <td class="column1">Potential Profit (On TGT)</td>
+          <td class="column2">
+            <span id="outputPotentialProfitOnTarget"></span>
+            &nbsp;&nbsp;
+            <span id="outputPotentialProfitOnTargetPercentage" class="badge text-bg-success"></span>
+            &nbsp;&nbsp;
+            <span id="outputPotentialProfitPerShare"></span>
+          </td>
+        </tr>
+        <tr class="table-danger">
+          <td class="column1">Potential Loss (On SL)</td>
+          <td class="column2">
+            <span id="outputPotentialLossOnStopLoss"></span>
+            &nbsp;&nbsp;
+            <span id="outputPotentialLossOnStopLossPercentage" class="badge text-bg-danger"></span>
+            &nbsp;&nbsp;
+            <span id="outputPotentialLossPerShare"></span>
+            
+          </td>
+        </tr>
+      </tbody>
+    </table>
