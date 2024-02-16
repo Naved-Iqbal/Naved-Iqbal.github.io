@@ -1,11 +1,11 @@
     <!-- ### START OF CALCULATOR CONTAINER #### -->
-    <div class="container pt-3" id="content">
+    <div class="container-fluid pt-3" id="content">
 
         <!-- Start of Form for User Input -->
         <!-- Capital Input -->
         <div class="row mb-3">
-            <label for="inputCapital" class="col-2 col-form-label" data-bs-toggle="tooltip" data-bs-title="Default tooltip">Capital (₹):</label>
-            <div class="col-4">
+            <label for="inputCapital" class="col-4 col-form-label" data-bs-toggle="tooltip" data-bs-title="Default tooltip">Capital (₹):</label>
+            <div class="col-8">
                 <input type="number" class="form-control" id="inputCapital" oninput="convertToWords()" placeholder="Enter Capital"/>
                 <div id="capitalInWords"></div>
                 <div id="capitalError" class="invalid-feedback d-block"></div>
@@ -14,8 +14,8 @@
 
         <!-- Risk on Capital Input -->
         <div class="row mb-3">
-          <div class="col-2">Risk on Capital (%):</div>
-          <div class="col-4">
+          <div class="col-4">Risk on Capital (%):</div>
+          <div class="col-8">
             <div class="input-group mb-3">
             <select id="riskPercentageList" class="form-select" onchange="handleRiskChange(this)">
               <option value="0.03" selected>3%</option>
@@ -32,8 +32,8 @@
 
         <!-- Entery Price Input -->
         <div class="row mb-3">
-            <label for="inputEntryPrice" class="col-2 col-form-label">Entry Price (₹):</label>
-            <div class="col-4">
+            <label for="inputEntryPrice" class="col-4 col-form-label">Entry Price (₹):</label>
+            <div class="col-8">
                 <input type="number" class="form-control" id="inputEntryPrice" placeholder="Enter Entry Price" />
                 <div id="entryPriceError" class="invalid-feedback d-block"></div>
             </div>
@@ -41,8 +41,8 @@
 
         <!-- Target (TGT) Price Input -->
         <div class="row mb-3">
-            <label for="inputTargetPrice" class="col-2 col-form-label">Target (TGT) Price (₹):</label>
-            <div class="col-4">
+            <label for="inputTargetPrice" class="col-4 col-form-label">Target (TGT) Price (₹):</label>
+            <div class="col-8">
                 <input type="number" class="form-control" id="inputTargetPrice" placeholder="Enter Target Price" />
                 <div id="targetPriceError" class="invalid-feedback d-block"></div>
             </div>
@@ -50,8 +50,8 @@
 
         <!-- Stop-Loss (SL) Price Input -->
         <div class="row mb-3">
-            <label for="inputStopLossPrice" class="col-2 col-form-label">Stop-Loss (SL) Price (₹):</label>
-            <div class="col-4">
+            <label for="inputStopLossPrice" class="col-4 col-form-label">Stop-Loss (SL) Price (₹):</label>
+            <div class="col-8">
                 <input type="number" class="form-control" id="inputStopLossPrice" placeholder="Enter Stop-Loss Price" />
                 <div id="stopLossPriceError" class="invalid-feedback d-block"></div>
             </div>
@@ -59,8 +59,8 @@
   
         <!-- Stop-Loss (SL) Price Input -->
         <div class="row mb-3">
-            <div class="col-2 col-form-label"></div>
-            <div class="col-4">
+            <div class="col-4 col-form-label"></div>
+            <div class="col-8">
                 <button onclick="calculate()" class="btn btn-primary" id="btn-calculate">Calculate</button>
             </div>
         </div>
