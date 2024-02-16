@@ -1,6 +1,39 @@
 // Function to calculate
 function calculate() {
 
+    // Find output elements
+    outputStockQuantityElement = document.getElementById("stockQuantity");
+    outputCapitalRequiredElement = document.getElementById("outputCapitalRequired");
+    outputCapitalRequiredPercentageElement = document.getElementById("outputCapitalRequiredPercentage");
+    outputRiskRatioElement = document.getElementById("outputRiskRatio");
+    outputRewardRatioElement = document.getElementById("outputRewardRatio");
+
+    outputPotentialProfitOnTargetElement = document.getElementById("outputPotentialProfitOnTarget");
+    outputPotentialProfitOnTargetPercentageElement = document.getElementById("outputPotentialProfitOnTargetPercentage");
+    outputPotentialProfitPerShareElement = document.getElementById("outputPotentialProfitPerShare");
+
+    outputPotentialLossOnStopLossElement = document.getElementById("outputPotentialLossOnStopLoss");
+    outputPotentialLossOnStopLossPercentageElement = document.getElementById("outputPotentialLossOnStopLossPercentage");
+    outputPotentialLossPerShareElement = document.getElementById("outputPotentialLossPerShare");
+
+    // Clear Previous Output
+    outputStockQuantityElement.textContent = "";
+    outputCapitalRequiredElement.textContent = "";
+    outputCapitalRequiredPercentageElement.textContent = "";
+  
+    outputRiskRatioElement.textContent = "";
+    // Reset the color to default color
+    outputRiskRatioElement.style.color = outputStockQuantityElement.style.color
+    outputRewardRatioElement.textContent = "";
+    
+    outputPotentialProfitOnTargetElement.textContent = "";
+    outputPotentialProfitOnTargetPercentageElement.textContent = "";
+    outputPotentialProfitPerShareElement.textContent = "";
+  
+    outputPotentialLossOnStopLossElement.textContent = "";
+    outputPotentialLossOnStopLossPercentageElement.textContent = "";
+    outputPotentialLossPerShareElement.textContent = "";
+
     // Clear previous error messages
     clearErrorMessages();
   
@@ -23,19 +56,29 @@ function calculate() {
     if (!validateInputs()) {
       return;
     }
+
+    riskOnCapital = capital * riskPercentageOnCapital
   
     const profitPerShareOnTarget = (targetPrice - entryPrice).toFixed(2);
     const lossPerShareOnStopLoss = (entryPrice - stopLossPrice).toFixed(2);
   
     // Calculate values
-    let quantityToBuy = Math.floor((capital * riskPercentageOnCapital) / lossPerShareOnStopLoss);
+    let quantityToBuy = Math.floor(riskOnCapital / lossPerShareOnStopLoss);
   
     let capitalRequired = (quantityToBuy * entryPrice).toFixed(2);
+
+    // Adjust quantityToBuy if capitalRequired is greater than capital
+    if (quantityToBuy < 1) {
+      outputStockQuantityElement.textContent = "0";
+      outputRiskRatioElement.textContent = "Calculated Risk (₹"+ lossPerShareOnStopLoss +") is more than Selected Risk (₹"+ riskOnCapital + ")";
+      outputRiskRatioElement.style.color = "red";
+      return;
+    }
   
     // Adjust quantityToBuy if capitalRequired is greater than capital
     if (capitalRequired > capital) {
-        quantityToBuy = Math.floor((capital * (riskOnCapital / 100)) / entryPrice);
-        capitalRequired = calculateCapitalRequired(quantityToBuy, entryPrice);
+        quantityToBuy = Math.floor(capital / entryPrice);
+        capitalRequired = (quantityToBuy * entryPrice).toFixed(2);
     }
   
   
@@ -45,21 +88,21 @@ function calculate() {
     const totalLossOnStopLoss = (quantityToBuy * lossPerShareOnStopLoss).toFixed(2);
   
     // Update HTML with calculated values
-    document.getElementById("stockQuantity").textContent = quantityToBuy;
-    document.getElementById("outputCapitalRequired").textContent = "₹" + capitalRequired;
-    document.getElementById("outputCapitalRequiredPercentage").textContent = ((capitalRequired / capital) * 100).toFixed(2) + "%";
+    outputStockQuantityElement.textContent = quantityToBuy;
+    outputCapitalRequiredElement.textContent = "₹" + capitalRequired;
+    outputCapitalRequiredPercentageElement.textContent = ((capitalRequired / capital) * 100).toFixed(2) + "%";
   
     
-    document.getElementById("outputRiskRatio").textContent = "1:";
-    document.getElementById("outputRewardRatio").textContent = riskRewardRatioString;
+    outputRiskRatioElement.textContent = "1:";
+    outputRewardRatioElement.textContent = riskRewardRatioString;
     
-    document.getElementById("outputPotentialProfitOnTarget").textContent = "₹" + totalProfitOnTarget;
-    document.getElementById("outputPotentialProfitOnTargetPercentage").textContent = ((totalProfitOnTarget / capitalRequired) * 100).toFixed(2) + "%";
-    document.getElementById("outputPotentialProfitPerShare").textContent = "(₹" + profitPerShareOnTarget + " per share)";
+    outputPotentialProfitOnTargetElement.textContent = "₹" + totalProfitOnTarget;
+    outputPotentialProfitOnTargetPercentageElement.textContent = ((totalProfitOnTarget / capitalRequired) * 100).toFixed(2) + "%";
+    outputPotentialProfitPerShareElement.textContent = "(₹" + profitPerShareOnTarget + " per share)";
   
-    document.getElementById("outputPotentialLossOnStopLoss").textContent = "₹" + totalLossOnStopLoss;
-    document.getElementById("outputPotentialLossOnStopLossPercentage").textContent = ((totalLossOnStopLoss / capitalRequired) * 100).toFixed(2) + "%";
-    document.getElementById("outputPotentialLossPerShare").textContent = "(₹" + lossPerShareOnStopLoss + " per share)";
+    outputPotentialLossOnStopLossElement.textContent = "₹" + totalLossOnStopLoss;
+    outputPotentialLossOnStopLossPercentageElement.textContent = ((totalLossOnStopLoss / capitalRequired) * 100).toFixed(2) + "%";
+    outputPotentialLossPerShareElement.textContent = "(₹" + lossPerShareOnStopLoss + " per share)";
   
   
     // Function to validate input values
