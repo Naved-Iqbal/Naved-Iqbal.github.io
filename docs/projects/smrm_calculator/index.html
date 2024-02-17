@@ -51,7 +51,7 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <div class="container-fluid p-0 m-0" id="nav_bar">
-      <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
+      <div class="collapse" id="navbarHeader" data-bs-theme="dark">
         <div class="bg-dark p-4">
           <figure>
             <blockquote class="blockquote">
@@ -108,7 +108,7 @@
                 </div>
               </div>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
           </div>
@@ -172,18 +172,27 @@
 <script src="/assets/js/jquery.min.js"></script>
 <script>
   $(document).ready(function(){
-    $('#content').load('calculator.html');
-    $("#year").text(new Date().getFullYear());
- 
- 
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    if(urlParams.has('about')){
+      $('#content').load('about.html');
+    }
+    else{
+      $('#content').load('calculator.html');
+    }
     
-    $("#brand_link").click(function() {
+    $("#year").text(new Date().getFullYear());
+  });
+
+  $("#brand_link").click(function() {
        $("#content").load('calculator.html');
        return false;
-    });
+  });
  
  
-    $("#home_link").click(function() {
+  $("#home_link").click(function() {
        $("#content").load('calculator.html');
        $("#navbarHeader").removeClass("show");
        $("#toggle_button").attr("aria-expanded","false");
@@ -192,16 +201,31 @@
     });
  
     $("#about_link").click(function() {
+
+      const searchParams = new URLSearchParams(window.location.search);
+      let url = window.location.href;  
+      if(url.indexOf('?') > -1){
+        location.reload();
+      }
+      else{
+          if (url.indexOf('?') > -1){
+            url += '&about=true'
+          } else {
+            url += '?about=true'
+          }
+          window.location.href = url;
+      }
+
+      /*
        $("#content").load('about.html');
        $("#navbarHeader").removeClass("show");
        $("#toggle_button").attr("aria-expanded","false");
        $("#toggle_button").addClass("collapsed");
-       return false;
+       */
+      return false;
     });
- 
- });
+
 </script>
 <script src="/assets/js/calculator_script.js"></script>
-
 </body>
 </html>
