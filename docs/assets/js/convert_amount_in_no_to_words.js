@@ -31,7 +31,7 @@ function convertToWords() {
             return;
     }
 
-    selectedRiskPercentage = parseFloat(document.getElementById("riskPercentaRange").value);
+    selectedRiskPercentage = parseFloat(document.getElementById("inputRiskPercentageRange").value);
     riskAmount = (capitalAmount*(selectedRiskPercentage/100)).toFixed(2);
 
     document.getElementById("riskAmount").innerText = `₹${riskAmount}`;
