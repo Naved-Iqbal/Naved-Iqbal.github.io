@@ -39,7 +39,7 @@ function calculate() {
   
     // Get input values
     const capital = parseFloat(document.getElementById("inputCapital").value);
-    const riskPercentageOnCapital = parseFloat(document.getElementById("riskPercentaRange").value/100).toFixed(2);
+    const riskPercentageOnCapital = parseFloat(document.getElementById("riskPercentageRange").value/100).toFixed(2);
   
     const entryPrice = parseFloat(document.getElementById("inputEntryPrice").value);
     const targetPrice = parseFloat(document.getElementById("inputTargetPrice").value);
