@@ -31,8 +31,8 @@ function convertToWords() {
             return;
     }
 
-    selectedRiskPercentage = parseFloat(document.getElementById("riskPercentageList").value);
-    riskAmount = (capitalAmount*selectedRiskPercentage).toFixed(2);
+    selectedRiskPercentage = parseFloat(document.getElementById("riskPercentaRange").value);
+    riskAmount = (capitalAmount*(selectedRiskPercentage/100)).toFixed(2);
 
     document.getElementById("riskAmount").innerText = `₹${riskAmount}`;
 }
