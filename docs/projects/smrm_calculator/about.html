@@ -69,14 +69,14 @@
 
             <li class="m-3"><strong>Potential Profit:</strong>
                 <ul>
-                    <li>The estimates profit you could earn if the stock price reaches your target.</li>
+                    <li>The estimated profit you could earn if the stock price reaches your target.</li>
                     <li>It shows the best-case scenario based on your assumptions and helps evaluate potential upside.</li>                       
                 </ul>
             </li>
 
             <li class="m-3"><strong>Potential Loss:</strong>
                 <ul>
-                    <li>The estimates loss you could incur if the stock price falls to your stop-loss. </li>
+                    <li>The estimated loss you could incur if the stock price falls to your stop-loss. </li>
                     <li>It highlights the worst-case scenario based on your risk management and emphasizes the potential downside.</li>                       
                 </ul>
             </li>
@@ -85,28 +85,38 @@
         <h6 class="display-6">How It Works</h6>
         <p class="lead">The calculator uses your input values such as capital, entry price, target price, and stop-loss price to calculate essential risk management metrics such as quantity to buy, capital required, risk-reward ratio, potential profit, and potential loss.</p>
 
-        <p class="fw-normal"><strong>Example: </strong> Suppose you have a capital of ₹100,000, and you want to invest 10% of it in a stock with an entry price of ₹50, a target price of ₹70, and a stop-loss price of ₹45. Here's how the calculator works:</p>
+        <p class="fw-normal"><strong>Example: </strong> Suppose you have a capital of ₹10,000 and you want to in a stock with an entry price of ₹100, a target price of ₹120, and a stop-loss price of ₹90. Below are the calculations which calculator perform:</p>
 
         <div class="container ms-0 ps-0">
             <div class="card container ps-1 mt-5 mb-5">
                 <div class="card-header ps-0">Input</div>
                 <div class="card-body ps-1">
-                    <div class="container d-flex ps-0">$$ \small{ Capital = \text{₹}100000 } $$</div>
+                    <div class="container d-flex ps-0">$$ \small{ Capital = \text{₹}10000 } $$</div>
                     <div class="container d-flex ps-0"> $$ \small{ Risk\;Percentage = 3\text{%} \;\;\;(i.e. 0.03) } $$ </div>
                     <div class="container d-flex ps-0"> $$ \small{ Entry\;Price = \text{₹}100 } $$ </div>
-                    <div class="container d-flex ps-0"> $$ \small{ Target\;Price = \text{₹}140 } $$ </div>
-                    <div class="container d-flex ps-0"> $$ \small{ Stop\;Loss\;Price = \text{₹}80 } $$ </div>
+                    <div class="container d-flex ps-0"> $$ \small{ Target\;Price = \text{₹}120 } $$ </div>
+                    <div class="container d-flex ps-0"> $$ \small{ Stop\;Loss\;Price = \text{₹}90 } $$ </div>
                 </div>
               </div>
 
               <div class="card container ps-1">
                 <div class="card-header ps-0">Calculations</div>
                 <div class="card-body ps-1">
+
                     <div class="container d-flex ps-0">
-                        $$ \small{ Buy\;Quantity = \frac{Capital \times Risk\;Percentage}{Entry\;Price - Stop\;Loss\;Price} } $$
+                        $$ \small{ Risk\;on\;Capital = Capital \times Risk\;Percentage } $$
                     </div>
                     <div class="container d-flex ps-0">
-                        $$ \small{ Buy\;Quantity = \frac{100000 \times 0.03}{100 - 80} = \frac{3000}{20} = 150 } $$
+                        $$ \small{ Risk\;on\;Capital = 10000 \times 0.03 = \text{₹}300 } $$
+                    </div>
+
+                    <hr class="hr">
+
+                    <div class="container d-flex ps-0">
+                        $$ \small{ Buy\;Quantity = \frac{Risk\;on\;Capital}{Entry\;Price - Stop\;Loss\;Price} } $$
+                    </div>
+                    <div class="container d-flex ps-0">
+                        $$ \small{ Buy\;Quantity = \frac{300}{100 - 90} = \frac{300}{10} = 30 } $$
                     </div>
 
                     <hr class="hr">
@@ -116,7 +126,7 @@
                         $$ \small{ Capital\;Required = Buy\;Quantity \times Entry\;Price } $$
                     </div>
                     <div class="container  d-flex ps-0">
-                        $$ \small{ Capital\;Required = 150 \times 100 = \text{₹}15000 } $$
+                        $$ \small{ Capital\;Required = 30 \times 100 = \text{₹}3000 } $$
                     </div>
 
                     <hr class="hr">
@@ -125,7 +135,7 @@
                         $$ \small{ Risk\;Reward\;Ratio = \frac{Target\;Price - Entry\;Price}{Entry\;Price - Stop\;Loss\;Price} } $$
                     </div>
                     <div class="container  d-flex ps-0">
-                        $$ \small{ Risk\;Reward\;Ratio = \frac{140 - 100}{100 - 80} = \frac{40}{20} = 2 \;\;(i.e. 1:2) } $$
+                        $$ \small{ Risk\;Reward\;Ratio = \frac{120 - 100}{100 - 90} = \frac{20}{10} = 2 \;\;(i.e. 1:2) } $$
                     </div>
 
                     <hr class="hr">
@@ -134,7 +144,7 @@
                         $$ \small{ Potential\;Profit = Buy\;Quantity \times (Target\;Price - Entry\;Price) } $$
                     </div>
                     <div class="container  d-flex ps-0">
-                        $$ \small{ Potential\;Profit = 150 \times (140 - 100) = 150 \times 40 = \text{₹}6000 } $$
+                        $$ \small{ Potential\;Profit = 30 \times (120 - 100) = 30 \times 20 = \text{₹}600 } $$
                     </div>
 
                     <hr class="hr">
@@ -143,7 +153,7 @@
                         $$ \small{ Potential\;Loss = Buy\;Quantity \times (Entry\;Price - Stop\;Loss\;Price) } $$
                     </div>
                     <div class="container  d-flex ps-0">
-                        $$ \small{ Potential\;Loss = 150 \times (100 - 80) = 150 \times 20 = \text{₹}3000 } $$
+                        $$ \small{ Potential\;Loss = 30 \times (100 - 90) = 30 \times 10 = \text{₹}300 } $$
                     </div>
 
                 </div>
