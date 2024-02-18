@@ -185,17 +185,37 @@
   });
 
   $("#brand_link").click(function() {
-       $("#content").load('calculator.html');
+
+      let url = window.location.href;
+        if(url.indexOf('?') > -1){
+          const urlObj = new URL(url);
+          urlObj.search = '';
+          urlObj.hash = '';
+          window.location.href = urlObj.toString();;
+        }
+        else{
+          $("#content").load('calculator.html');
+        }
        return false;
   });
  
  
   $("#home_link").click(function() {
-       $("#content").load('calculator.html');
-       $("#navbarHeader").removeClass("show");
-       $("#toggle_button").attr("aria-expanded","false");
-       $("#toggle_button").addClass("collapsed");
-       return false;
+      let url = window.location.href;
+      if(url.indexOf('?') > -1){
+        const urlObj = new URL(url);
+        urlObj.search = '';
+        urlObj.hash = '';
+        window.location.href = urlObj.toString();;
+      }
+      else{
+        $("#content").load('calculator.html');
+        $("#navbarHeader").removeClass("show");
+        $("#toggle_button").attr("aria-expanded","false");
+        $("#toggle_button").addClass("collapsed");
+      }
+
+      return false;
     });
  
     $("#about_link").click(function() {
@@ -206,11 +226,7 @@
         location.reload();
       }
       else{
-          if (url.indexOf('?') > -1){
-            url += '&about=true'
-          } else {
-            url += '?about=true'
-          }
+          url += '?about=true'
           window.location.href = url;
       }
 
